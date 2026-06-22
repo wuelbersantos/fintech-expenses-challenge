@@ -25,3 +25,18 @@ model Category {
 
   createdAt DateTime @default(now())
 }
+
+model Transaction {
+  id          String   @id @default(uuid())
+  title       String
+  amount      Float
+  type        String   // income | expense
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
