@@ -140,3 +140,15 @@ API está rodando em produção no Railway:
 ```
 https://fintech-expenses-challenge-production-7aef.up.railway.app
 ```
+##  Status do Projeto
+O projeto está em desenvolvimento ativo. Abaixo o status das funcionalidades baseadas no escopo do desafio:
+
+- [x] Autenticação (Login/Registro)
+- [x] CRUD de Categorias
+- [x] CRUD de Transações (Create/Read)
+- [x] Deploy em ambiente de produção (Railway)
+- [ ] Dashboard com indicadores calculados na API
+- [ ] Filtros avançados e paginação
+- [ ] Testes automatizados (Unitários/E2E)
+- [ ] Interface React (Pendente)
+- [ ] Refatoração da segurança (Migração para AuthGuard JWT)rança (Migração para AuthGuard JWT)
