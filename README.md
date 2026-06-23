@@ -1,34 +1,33 @@
-# Fintech Expenses API
+#  Fintech Expenses API
 
 ##  Desafio Técnico — Gestão Financeira Corporativa
 
-Backend desenvolvido em **NestJS + TypeScript + Prisma + PostgreSQL**, com foco em uma API modular para controle financeiro por usuário.
+Backend desenvolvido com **NestJS + TypeScript + Prisma + PostgreSQL**, focado em uma API modular para controle financeiro por usuário.
 
 ---
 
 ##  Objetivo
 
-Construir uma API para gestão financeira corporativa onde cada usuário pode:
+Permitir que usuários:
 
-- Registrar entradas e saídas financeiras
-- Organizar transações por categoria
-- Filtrar e consultar movimentações
-- Garantir isolamento de dados por usuário
+- Registrem entradas e saídas financeiras
+- Organizem transações por categoria
+- Consultem movimentações
+- Garantam isolamento de dados por usuário
 
 ---
 
 ##  Decisões Técnicas
 
-###  Backend
+### Backend
 - NestJS com arquitetura modular
 - Prisma ORM para acesso ao banco
 - PostgreSQL como banco relacional
-- DTOs planejados para validação (em evolução)
-- Estrutura separada por domínio (Auth, Categories, Transactions)
+- DTOs com validação (em evolução)
+- Separação por domínio (Auth, Categories, Transactions)
 
-###  Observações
-- Projeto focado em clareza e organização, sem over-engineering
-- Sem uso de DDD, CQRS ou microsserviços (conforme instruções do desafio)
+### Observação
+Projeto focado em simplicidade e clareza, sem over-engineering (DDD, CQRS ou microsserviços não utilizados conforme o desafio).
 
 ---
 
@@ -38,72 +37,62 @@ Construir uma API para gestão financeira corporativa onde cada usuário pode:
 - TypeScript (strict mode)
 - Prisma ORM 6.19.3
 - PostgreSQL 16.14
-- JWT (em Desenvolvimento)
+- JWT (em implementação futura)
 
 ---
 
 ##  Banco de Dados
 
-### PostgreSQL
-- Versão: 16.14
-
-### Prisma
-- ORM utilizado para migrations e queries
+- PostgreSQL 16.14
+- Prisma ORM para migrations e queries
 
 ---
+##  Instalação
 
-##  Módulos da API
+```bash
+npm install
+```
+##  Migrations (Prisma)
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+##  Variáveis de ambiente 
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/fintech_expenses_db"
+```
+##  Usuário de teste 
 
-###  Auth Module
+Email: wuelber.r2@gmail.com  
+Senha: @GRa3x57$1
+
+
+
+##  Módulos
+
+### Auth
 - Registro de usuário
-- Login (JWT em evolução)
+- Login
 
----
+### Categories
+- CRUD de categorias por usuário
 
-###  Categories Module
-- Criar categoria
-- Listar categorias por usuário
-- Relacionamento com usuário autenticado
-
----
-
-###  Transactions Module
-- Criar transação (entrada/saída)
-- Listar transações por usuário
-- Buscar por ID
-- Atualizar transação
-- Remover transação
+### Transactions
+- CRUD de transações
+- Filtros por usuário
 
 ---
 
 ##  Modelo de Dados
 
 ### User
-- id
-- name
-- email
-- password
-- createdAt
-
----
+- id, name, email, password, createdAt
 
 ### Category
-- id
-- name
-- description
-- userId
-- createdAt
-
----
+- id, name, description, userId, createdAt
 
 ### Transaction
-- id
-- title
-- amount
-- type (INCOME | EXPENSE)
-- categoryId
-- userId
-- createdAt
+- id, title, amount, type, categoryId, userId, createdAt
 
 ---
 
@@ -115,10 +104,39 @@ Construir uma API para gestão financeira corporativa onde cada usuário pode:
 
 ---
 
-## Configuração do ambiente
+##  Endpoints
 
-Criar arquivo `.env`:
+###  Auth
+- POST /auth/register
+- POST /auth/login
 
-```env id="env_senior"
-DATABASE_URL="postgresql://user:password@localhost:5432/fintech_expenses_db"
-JWT_SECRET="your_secret_key"
+---
+
+### Categories
+- POST /categories
+- GET /categories/:userId
+- GET /categories/:userId/:id
+- PUT /categories/:userId/:id
+- DELETE /categories/:userId/:id
+
+---
+
+###  Transactions
+- POST /transactions
+- GET /transactions/:userId
+- GET /transactions/:userId/:id
+- PUT /transactions/:userId/:id
+- DELETE /transactions/:userId/:id
+
+---
+
+
+### Rodando o projeto
+```
+npm run start:dev
+```
+### Deploy
+API está rodando em produção no Railway:
+```
+https://fintech-expenses-challenge-production-7aef.up.railway.app
+```
