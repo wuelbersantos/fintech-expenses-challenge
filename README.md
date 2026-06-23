@@ -152,3 +152,13 @@ O projeto está em desenvolvimento ativo. Abaixo o status das funcionalidades ba
 - [ ] Testes automatizados (Unitários/E2E)
 - [ ] Interface React (Pendente)
 - [ ] Refatoração da segurança (Migração para AuthGuard JWT)rança (Migração para AuthGuard JWT)
+
+
+## transacao:
+https://fintech-expenses-challenge-production-7aef.up.railway.app/transactions/cab6e453-a690-450c-aee3-84c85e981d39
+
+## consultar caterogoria
+https://fintech-expenses-challenge-production-7aef.up.railway.app/categories/cab6e453-a690-450c-aee3-84c85e981d39
+
+
+
