@@ -9,9 +9,11 @@ import {
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 
+
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
+  
 
   @Post()
   create(@Body() body: any) {
@@ -23,6 +25,7 @@ export class CategoriesController {
   findAll(@Param('userId') userId: string) {
     return this.categoriesService.findAll(userId);
   }
+
 
   @Put(':userId/:id')
   update(
@@ -37,4 +40,5 @@ export class CategoriesController {
   remove(@Param('id') id: string, @Param('userId') userId: string) {
     return this.categoriesService.remove(id, userId);
   }
+  
 }
