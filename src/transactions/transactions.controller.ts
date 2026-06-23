@@ -15,7 +15,7 @@ export class TransactionsController {
 
   @Post()
   create(@Body() body: any) {
-    // por enquanto userId ainda vem do body (vamos melhorar depois com JWT)
+    
     return this.transactionsService.create(body.userId, body);
   }
 
